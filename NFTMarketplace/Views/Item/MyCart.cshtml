@@ -1,0 +1,84 @@
+﻿
+@model Cart
+
+@{
+    ViewData["Title"] = "MyCart";
+}
+
+@*Get the identity associated with the claims principal *@
+
+@{
+    var identity = Context.User.Identity;
+    bool isAuth = identity?.IsAuthenticated ?? false;
+}
+<h1>
+    @((isAuth) ? $"Your Cart - {@identity?.Name}" : "Your Cart")
+</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Description
+            </th>
+            <th class="text-right">
+                Price
+            </th>
+            <th class="text-right">
+                Final amount(20% tax)
+            </th>
+@*            <th class="text-right">
+                Remove this column
+            </th>*@
+@*            <th>
+
+            </th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CartItems())
+        {
+            <tr>
+                <td>
+                    <div class="watermarked">
+                        <img src="~/images/@item.Item?.ProductImage" height="100" width="100" alt="@item.Item?.ImageName" />
+                    </div>
+                </td>
+                <td>
+                    @item.Item?.Description
+                </td>
+                <td class="text-right">
+                    @item.Item?.UnitPrice?.ToString("c")
+                </td>
+
+                <td class="text-right">
+                    @item.FinalAmount.ToString("c")
+                </td>
+
+@*                <td>
+                    <form asp-action="RemoveFromCart" asp-controller="Item" method="post">
+                        <input type="hidden" value="@item.Item.ItemID" name="itemID" />
+                        <input type="submit" class="btn btn-sm btn-danger" value="Remove Product" />
+                    </form>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-right">
+                Order Total:
+            </td>
+            <td>
+                @Model.ComputeOrderTotal()?.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<p>
+    <a asp-action="MyOrders" asp-controller="Item">Place Order</a>
+</p>

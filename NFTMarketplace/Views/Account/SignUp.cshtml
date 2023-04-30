@@ -1,0 +1,86 @@
+﻿@model TestReverseEngineer.Models.tabCustomer
+
+<h4>Sign Up</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="Role" class="control-label">Type</label>
+                <select asp-for="Role" class="form-control" required>
+                    <option value="Buyer" selected>Buyer</option>
+                    <option value="Seller">Seller</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardNumber" class="control-label">Card Number</label>
+                <input 
+                    asp-for="CardNumber" 
+                    class="form-control"
+                    placeholder="1234-5678-9012-3456"
+                    pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+                    title="Please input in format requested: 1234-1234-1234-1234"
+                    maxlength="19"
+                       minlength="19" required />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingAddress" class="control-label">Billing Address</label>
+                <input asp-for="BillingAddress" class="form-control" required />
+                <span asp-validation-for="BillingAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardName" class="control-label">Name on Card</label>
+                <input asp-for="CardName" class="form-control" required />
+                <span asp-validation-for="CardName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardValidity" class="control-label">Card Validity</label>
+                <input type="month" asp-for="CardValidity" class="form-control" required />
+                <span asp-validation-for="CardValidity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardCvv" class="control-label">Card CVV</label>
+                <input asp-for="CardCvv" class="form-control" maxlength="3" minlength="3" required />
+                <span asp-validation-for="CardCvv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" required/>
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoB" class="control-label">Date of Birth</label>
+                <input type="date" asp-for="DoB" class="form-control" required />
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" required />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input type="email" asp-for="Email" class="form-control" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPassword" class="control-label"></label>
+                <input asp-for="UserPassword" class="form-control" required />
+                <span asp-validation-for="UserPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

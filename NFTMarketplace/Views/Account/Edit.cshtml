@@ -1,0 +1,95 @@
+﻿@model TestReverseEngineer.Models.tabCustomer
+
+@{
+    ViewData["Title"] = "My Account";
+}
+
+<div class="col-md-4">
+<h4>
+    Modify account information
+</h4>
+<hr />
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CustomerID" />
+
+        <div class="form-group">
+            <label asp-for="CardNumber" class="control-label">Card number</label>
+            <input asp-for="CardNumber"
+                   class="form-control"
+                   placeholder="1234-5678-9012-3456"
+                   pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+                   title="Please input in format requested: 1234-1234-1234-1234"
+                   maxlength="19"
+                   minlength="19" />
+            <span asp-validation-for="CardNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BillingAddress" class="control-label">Billing address</label>
+            <input asp-for="BillingAddress" class="form-control" />
+            <span asp-validation-for="BillingAddress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CardName" class="control-label">Name on Card</label>
+            <input asp-for="CardName" class="form-control" />
+            <span asp-validation-for="CardName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CardValidity" class="control-label">Card Validity</label>
+            <input type="month" asp-for="CardValidity" class="form-control" />
+            <span asp-validation-for="CardValidity" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CardCvv" class="control-label">Card CVV</label>
+            <input asp-for="CardCvv" class="form-control" />
+            <span asp-validation-for="CardCvv" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label">Username</label>
+            <input asp-for="UserName" class="form-control" readonly/>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+    @*    <div class="form-group">
+            <label asp-for="UserPassword" class="control-label">Password</label>
+            <input asp-for="UserPassword" class="form-control" placeholder="New Password" />
+            <span asp-validation-for="UserPassword" class="text-danger"></span>
+        </div>*@
+
+        <div class="form-group">
+            <label asp-for="Role" class="control-label"></label>
+            <input asp-for="Role" class="form-control" readonly/>
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input type="email" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FullName" class="control-label"></label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+    @*    <div class="form-group">
+            <label asp-for="DoB" class="control-label">Date of Birth</label>
+            <input type="date" asp-for="DoB" class="form-control" readonly/>
+            <span asp-validation-for="DoB" class="text-danger"></span>
+        </div>*@
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+    <hr />
+    <a class="btn btn-outline-dark" asp-action="Index" asp-controller="Item">Take me home</a>
+</div>

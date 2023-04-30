@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TestReverseEngineer.Models.tabOrderLineItem>
+
+
+@{
+    ViewData["Title"] = "My Orders";
+    var identity = Context.User.Identity;
+}
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Download Original Image
+                </th>
+                <th>
+                    Cancel Order(Do not download image if you want to cancel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderNameNavigation.OrderDate)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) 
+            {
+                <tr>
+                    <td>
+                        <div class="watermarked">
+                            <img src="~/images/@item.ItemNameNavigation.ProductImage" height="100" width="100" />
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-action="ImageView" asp-route-id=@item.OrderNameNavigation.OrderID asp-controller="Item"
+                        >
+                            Original Image Link for @item.ItemNameNavigation.ImageName
+                        </a>
+                    </td>
+                    <td>
+                    @if(item.OrderNameNavigation.Processed == 1)
+                    {
+                        <a> Cancellation unavailable</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Cancel" asp-route-id="@item.OrderNameNavigation.OrderID" asp-controller="Item">Cancel Order</a>
+                    }
+                    </td>
+                    <td>
+                        @item.OrderNameNavigation.OrderDate.Value.ToString("dd MMM yyyy")
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

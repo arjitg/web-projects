@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TestReverseEngineer.Models.tabReview>
+
+@*@using MultipleModelInOneView;
+@model dynamic*@
+
+@*Get the identity associated with the claims principal *@
+
+@{
+    var identity = Context.User.Identity;
+    bool isAuth = identity?.IsAuthenticated ?? false;
+}
+
+
+<div class="watermarked">
+    <img src="~/images/@ViewData["ProductImage"]" height="100" width="100" />
+</div>
+
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Review
+            </th>
+            <th>
+                Review By
+            </th>
+            <th>
+                Reviewed on
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    <strong>
+                        @Html.DisplayFor(modelItem => item.Review)
+                    </strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewByNavigation.FullName)
+                </td>
+                <td>
+                    @item.Date.Value.ToString("dd MMM yyyy")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-outline-dark" asp-action="Index" asp-controller="Item">Back</a>

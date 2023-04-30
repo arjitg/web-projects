@@ -1,0 +1,62 @@
+﻿@model TestReverseEngineer.Models.LoginInput
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="col-md-4" text-align="center">
+    <h1>Login</h1>
+
+
+    <hr />
+    <form asp-action="Login" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="ReturnURL" />
+
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label"></label>
+            <input asp-for="UserName" class="form-control" required/>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UserPassword" class="control-label"></label>
+            <input asp-for="UserPassword" class="form-control" required/>
+            <span asp-validation-for="UserPassword" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </form>
+
+
+@if (ViewData["failure"] != null)
+{
+    <div class="alert alert-danger">@ViewData["failure"]</div>
+}
+
+@{
+    bool identity = Context.User.Identity?.IsAuthenticated ?? false;
+}
+
+@if (!identity)
+{
+    <div>
+        <a asp-action="SignUp" asp-controller="Account">Sign Up</a>
+    </div>
+}
+
+
+    <div>
+        <a asp-action="Index" asp-controller="Item">Take me home</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

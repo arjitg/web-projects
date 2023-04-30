@@ -1,0 +1,200 @@
+﻿@model IEnumerable<TestReverseEngineer.Models.tabItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Our listings - Just browse, buy or earn!</h2>
+
+
+@if(TempData["message"] != null)
+{
+    <div class="alert alert-danger">@TempData["message"]</div>
+}
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
+
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <p>
+            Search by Product Name:
+            <input maxlength="20"
+                   type="text"
+                   name="searchName"
+                   value="@ViewData["NameFilter"]" />
+
+            Minimum Price:
+            <input type="number"
+                   min="0"
+                   max="1000"
+                   name="priceMin"
+                   value="@ViewData["PriceMinFilter"]" />
+
+            Maximum Price:
+            <input type="number"
+                   min="0"
+                   max="1000"
+                   name="priceMax"
+                   value="@ViewData["PriceMaxFilter"]" />
+
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <a class="btn btn-outline-dark" asp-action="">All Products</a>
+        </p>
+    </div>
+</form>
+
+
+@{
+    var identity = Context.User.Identity;
+    bool isAuth = identity?.IsAuthenticated ?? false;
+    Cart currentCart = (Cart)ViewData["cart"];
+    var isCreator = false;
+}
+@if (isAuth)
+{
+    <p>
+        <a asp-action="Create" class="alert alert-success page-header" style="float:left;">Create your NFT!</a>
+    </p>
+}
+
+@if(Model != null)
+{
+    <table>
+        @foreach(var item in Model)
+        {
+            <thead>
+                <tr>
+                    <th>
+                        <div class="container">
+                            <a asp-action="Details" asp-route-id="@item.ItemID">@Html.DisplayFor(modelItem => item.ImageName), for $@item.UnitPrice</a>
+                            <div class="card">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <div class="card-header col-md-8">
+                                                <div class="watermarked">
+                                                <img src="~/images/@item.ProductImage" style="width: 50%; height: auto; " />
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="card-body col-md-4">
+                                                <table id="btnTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <td align="right">
+                                                                @if (isAuth && (item != null))
+                                                                {
+                                                                    isCreator = Context.Session.GetString("Sid") == item.CreatedBy.ToString();
+                                                                }
+                                                                @if (isCreator && (item.Sold==0))
+                                                                {
+                                                                    <a asp-action="Edit" asp-route-id="@item.ItemID" class="btn btn-danger">Edit</a>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <br>
+                                                        <tr>
+                                                            <td align="right">
+                                                                <a asp-action="CreateReview" asp-controller="Item" asp-route-id="@item.ItemID" class="btn btn-primary">Add a review</a>
+                                                            </td>
+                                                        </tr>
+                                                        <br>
+                                                        <tr>
+                                                            <td align="right">
+                                                                @if((currentCart != null) && (!currentCart.hasItem(item.ItemID)) && (item.Sold==0))
+                                                                {
+                                                                    <a asp-action="AddToCart" asp-route-id="@item.ItemID" class="btn btn-success">Buy</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a asp-action="Details" asp-route-id="@item.ItemID" class="btn btn-info">Sold!</a>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        <th>
+                                    </tr>
+                                </table>
+                                <div class="card-footer">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        }
+
+    </table>
+
+@*
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductImage)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ItemID">@Html.DisplayFor(modelItem => item.ImageName)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <span style="float:right">
+                            <div class="watermarked">
+                                <img src="@item.ProductImage" height="100" width="100" />
+                            </div>
+                        </span>
+                    </td>
+                    <td>
+                        @if (isAuth)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.ItemID" class="btn btn-primary">Edit - only show to creator howw</a>
+                        }
+                        <a asp-action="CreateReview" asp-controller="Item" asp-route-id="@item.ItemID" class="btn btn-primary">Add a review</a>
+                        @if((currentCart != null) && (!currentCart.hasItem(item.ItemID)) && (item.Sold==0))
+                        {
+                            <a asp-action="AddToCart" asp-route-id="@item.ItemID" class="btn btn-primary">Buy</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.ItemID" class="btn btn-primary">Sold!</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+*@
+}
+
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
