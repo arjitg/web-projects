@@ -1,0 +1,137 @@
+/*
+   HTML - Hands-on-Exercise 6
+
+   Pizza Order Style Sheet
+   
+   Filename: pizza.css
+  
+*/
+
+/* Field set styles */
+
+fieldset 
+{
+   background-color: rgb(255, 246, 205);
+   border: 1px solid rgb(233, 69, 0);
+   float: left;
+   margin: 1%;
+}
+
+/* Styles for different field set */
+
+#custInfo 
+{
+   width: 55%;
+}
+
+#buildPizza 
+{
+   width: 40%;
+}
+
+#toppings, #pizzaSize, #pizzaCrust
+{
+   background-color: rgb(237, 178, 74);
+   width: 60%;
+   margin:5px 20%;
+}
+
+/* Legend styles */
+
+legend 
+{
+   background-color: rgb(179, 20, 25);
+   color: white;
+   font-size: 0.9em;
+   font-weight:bold;
+}
+
+/* Default Label styles */
+
+label 
+{
+   clear: left;
+   display: block;
+   font-size: 0.9em;
+   float: left;
+   padding-left: 5px;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   width: 45%;
+}
+
+#buildPizza label
+{
+  width: 65%;
+}
+
+/* Default Input Box styles */
+
+input 
+{
+   display: block;
+   float: left;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   width: 50%;
+}
+
+#buildPizza label[for="quantity"]
+{
+    width: 30%;
+    margin-left: 20%;
+}
+
+input[type="number"]
+{
+   width: 10%;
+}
+
+
+/* Address field styles */
+
+textarea 
+{
+   display: block;
+   float: left;
+   height: 110px;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   width: 50%;
+}
+
+/* Crust selection list styles */
+
+#crust 
+{
+   margin: 10px 23%;
+   font-size: 0.9em;
+   width: 100px;
+}
+
+/* Radio button styles */
+
+input[type="radio"] 
+{
+   width: 30px;
+}
+
+/* Checkbox styles */
+
+input[type="checkbox"] 
+{
+   width: 20px;
+}
+
+/* Input button styles */
+
+input[type="submit"] {
+    font-size: 1.4em;
+    clear: left;
+    margin-left: 67%;
+    width: 175px;
+    background-color: rgb(179, 20, 25);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

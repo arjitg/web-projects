@@ -1,0 +1,52 @@
+﻿@charset "utf-8";
+
+/*
+   HTML - Hands-on-Exercise 2
+   
+   Mountain Wheels Layout Styles
+   Filename: mwLayout.css
+
+*/
+
+body {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1020px;
+	min-width: 640px;
+}
+
+body > header > img {
+	width: 100%;
+}
+
+body > nav {
+	width: 20%;
+	float: left;
+}
+
+body > article#tourSummary {
+	width: 50%;
+	float: left;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+body > aside#tourItinerary {
+	width: 24%;
+	float: left;
+	margin-right: 2%;
+}
+
+body > article#tourSummary > blockquote {
+	float: right;
+	width: 42%;
+	margin: 10px;
+}
+
+body > footer {
+	clear: left;
+	width: 100%;
+}
+
+
+

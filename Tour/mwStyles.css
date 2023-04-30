@@ -1,0 +1,109 @@
+﻿@charset "utf-8";
+
+/*
+Name: Arjit Gupta
+Date: 01/29/2023
+*/
+
+/* Structural Styles */
+html{
+    background-color: rgb(173, 189, 227);
+}
+body {
+    background-color: rgb(227, 210, 173);
+    font-family: "Century Gothic", sans-serif;
+}
+
+footer {
+    background-color: rgb(208, 184, 109);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+footer address{
+    font-size: 0.9em;
+    font-style: normal;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Heading Styles */
+h1, h2{
+    font-weight: normal;
+}
+
+/* Navigation Styles */
+
+nav > ul{
+    list-style-type: none;
+    line-height: 2em;
+    font-size: 0.9em;
+}
+nav a {
+    color: rgb(43, 59, 125);
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: rgb(212, 35, 35);
+}
+
+
+/* Article Styles */
+article#tourSummary h1{
+    font-size: 2.2em;
+    letter-spacing: 0.2em;
+}
+
+article#tourSummary p {
+    font-size: 1.1em;
+}
+
+article#tourSummary>p:first-of-type::first-line {
+    font-variant: small-caps;
+    font-size: 1.2em;
+}
+
+/* Aside Styles */
+aside#tourItinerary h1 {
+    font-size: 1.2em;
+}
+
+aside#tourItinerary h2 {
+    font-size: 0.9em;
+}
+
+aside#tourItinerary p {
+    font-size: 0.8em;
+}
+
+aside#tourItinerary h2:nth-of-type(odd) {
+    color: rgb(79,91,40);
+}
+aside#tourItinerary p:nth-of-type(odd) {
+    color: rgb(79,91,40);
+}
+
+aside#tourItinerary h2:nth-of-type(even) {
+    color: rgb(81,95,175);
+}
+aside#tourItinerary p:nth-of-type(even) {
+    color: rgb(81,95,175);
+}
+
+/* Blockquote Styles */
+
+blockquote{
+    background-color: rgb(173, 189, 227);
+    color: rgb(255, 255, 255);
+    opacity: 0.65;
+}
+
+blockquote p{
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

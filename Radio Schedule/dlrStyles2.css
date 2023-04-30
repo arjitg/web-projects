@@ -1,0 +1,123 @@
+﻿@charset "utf-8";
+
+/*
+   HTML - Hands-on-Exercise 5
+
+   DLR General Style Sheet
+  
+   Filename:  dlrStyles2.css
+
+*/
+
+
+/* HTML and Body styles */
+
+html {
+   background: url(dlrBack2.png), rgb(233, 200, 163);
+   font-family: Verdana, Geneva, sans-serif;
+   height: 100%;
+}
+
+body {
+   background-color: white;
+   box-shadow: rgb(51, 51, 51) 10px 0px 40px,  rgb(51, 51, 51) -10px 0px 40px;
+   border-left: 1px solid rgb(153, 83, 6);
+   border-right: 1px solid rgb(153, 83, 6);
+   margin: 0px auto;
+   min-width: 320px;
+   max-width: 1200px;   
+   width: 100%;
+}
+
+/* Header styles */
+
+header {
+   background-color: rgb(233, 200, 163);
+   border-bottom: 1px solid rgb(153, 83, 6);
+   color: white;
+
+}
+
+header h1 {
+   background: linear-gradient(to right, rgb(153, 83, 6) 30%, black);
+   color: white;
+   font-size: 1.4em;
+   padding: 5px 0px 5px 12px;
+}
+
+header h1 em {
+   font-size: 0.7em;
+}
+
+/* Navigation list styles */
+
+header nav ul{
+    text-align:center;
+}
+
+header nav ul li {
+   display: inline;
+   background-color: rgb(233, 200, 163);
+   font-size: 0.8em;   
+   padding: 0px 10px;
+}
+
+header nav ul li a {
+   color: rgb(153, 83, 6);
+   width: 100%;
+}
+
+header nav ul li a:hover {
+   color: white;
+   background-color: rgb(153, 83, 6);
+}
+
+/* Container Styles */
+
+div#container {
+   background: rgb(248, 248, 210);
+
+}
+
+
+/* Main Section styles */
+
+section#main {
+   padding: 10px 20px 0px 20px;
+}
+
+section#main img {
+   display: block;
+   width: 100%;
+}
+
+section#main h2 {
+   color: white;
+   background: linear-gradient(to right, rgb(153, 83, 6) 30%, black);
+   font-size: 1.1em;
+   letter-spacing: 5px;
+   padding: 5px 0px 5px 12px;
+}
+
+section#main p {
+   line-height: 1.4em;
+   margin: 15px;
+   column-count: 3;
+   column-gap: 20px;
+   column-rule-width: 1px;
+   column-rule-style: solid;
+   column-rule-color: black;
+}
+
+/* Footer styles */   
+
+footer {
+   color: white;    
+   background: linear-gradient(to right, rgb(153, 83, 6) 30%, black);   
+   font-size: 0.65em;  
+   font-style: normal;
+   height: 30px;
+   line-height: 30px;   
+   text-align: center;
+}
+

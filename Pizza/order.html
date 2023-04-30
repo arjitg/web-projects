@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+
+   <head>
+   <!--
+     HTML - Hands-on-Exercise 6
+
+      Red Ball Pizza Order Form
+      
+      Filename: order.html
+
+      Author: Arjit Gupta
+      Date: 2/8/2023
+     
+   -->
+      <meta charset="UTF-8" />
+      <title>Build your own Pizza</title>
+      <link href="redball.css" rel="stylesheet" />
+      <link href="pizza.css" rel="stylesheet" />
+
+   </head>
+
+   <body>
+
+      <header>
+         <img src="redball.png" alt="Red Ball Pizza" />
+         <nav>
+            <ul>
+               <li><a href="#">home</a></li>
+               <li><a href="#">menu</a></li>
+               <li><a href="#">directions</a></li>
+               <li><a href="#">coupons</a></li>
+               <li><a href="#">orders</a></li>
+               <li><a href="#">catering</a></li>
+               <li><a href="#">reviews</a></li>
+       </ul>
+         </nav>
+      
+         <article>
+            <h1>Online Ordering</h1>
+            <p>Thank you for using our <em>online ordering</em>
+               form for quick and easy orders, delivered free, fast, and 
+               hot to your door. If you need to talk to us directly,
+               call Red Ball Pizza at (386) 555 - 7499.
+            </p>
+         </article>
+      </header>
+
+   <section>
+      <p>Required values are marked by an asterisk (*)</p>
+
+      <form id="pizza" name="pizza" action="Not Set" method="post" onsubmit="return confirmSubmission()">
+
+          <fieldset id="custInfo">
+              <legend>Customer Information</legend>
+
+              <div class="custInput">
+                  <label for="custname">Name *</label>
+                  <input name="custname" id="custname"
+                         type="text" required maxlength="30"
+                         placeholder="First Name"
+                         pattern="^[a-zA-Z\s]+"
+                         title="One or more letters" />
+              
+
+                  <label for="street">Street address *</label>
+                  <input name="street" id="street"
+                         type="text" required maxlength="80"
+                         placeholder="Street Address"
+                         pattern="^[a-zA-Z0-9\s]+"
+                         title="One or more letters" />
+
+                  <label for="city">City *</label>
+                  <input name="city" id="city"
+                         type="text" required maxlength="10"
+                         placeholder="City"
+                         pattern="^[a-zA-Z\s]+"
+                         title="One or more letters" />
+
+                  <label for="zip">Postal code *</label>
+                  <input name="zip" id="zip"
+                         type="text" required maxlength="5"
+                         placeholder="12345"
+                         pattern="^[0-9]{5}$"
+                         title="5 digit code needed" />
+
+                  <label for="phone">Phone *</label>
+                  <input name="phone" id="phone"
+                         type="tel" required maxlength="30"
+                         placeholder="123-456-7890"
+                         pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+                         title="Please input in format requested: 123-456-7890" />
+
+                  <label for="request">Want it your way?</label>
+                  <textarea cols="50" rows="5" placeholder="Extra requests?Please keep it short and sweet!"></textarea>
+
+                  <label for="instruction">Out in the woods?</label>
+                  <textarea cols="50" rows="5" placeholder="Delivery Instructions"></textarea>
+
+              </div>
+          </fieldset>
+
+          <fieldset id="buildPizza">
+              <legend>Build Your Own Pizza</legend>
+
+              <fieldset id="pizzaSize">
+                  <legend>Select Your Pizza Size</legend>
+
+                  <label>10 inch</label>
+                  <input name="pizzaSize" id="10inch" type="radio" value="10" />
+
+                  <label>12 inch</label>
+                  <input name="pizzaSize" id="12inch" type="radio" value="12" checked />
+
+                  <label>14 inch</label>
+                  <input name="pizzaSize" id="14inch" type="radio" value="14" />
+
+              </fieldset>
+
+              <fieldset id="pizzaCrust">
+                  <legend>Choose Your Crust</legend>
+
+                  <select name="crust" id="crust" size="4">
+                      <option value="Thin" selected>Thin</option>
+                      <option value="Thick">Thick</option>
+                      <option value="Stuffed">Stuffed</option>
+                      <option value="Pan">Pan</option>
+                  </select>
+
+              </fieldset>
+
+              <fieldset id="toppings">
+                  <legend>Pick your Toppings</legend>
+
+                  <label for="pepperoni">Pepperoni</label>
+                  <input name="pepperoni" id="pepperoni" type="checkbox" value="pepperoni" />
+
+                  <label for="chicken">Chicken</label>
+                  <input name="chicken" id="chicken" type="checkbox" value="chicken" />
+
+                  <label for="mushrooms">Mushrooms</label>
+                  <input name="mushrooms" id="mushrooms" type="checkbox" value="mushrooms" />
+
+                  <label for="peppers">Green Peppers</label>
+                  <input name="peppers" id="peppers" type="checkbox" value="peppers" />
+
+              </fieldset>
+
+              <label for="quantity">Quantity</label>
+              <input name="quantity" id="quantity"
+                     type="number" required min="1" max="100"
+                     step="1" value="1" />
+
+          </fieldset>
+          
+          <div class="custInput">
+              <input name="submit" type="submit" value="Place Order" />
+          </div>
+
+     </form>
+
+   </section>
+
+   <footer>
+      <address>
+         Red Ball Pizza &bull;
+         811 Beach Drive &bull;
+         Ormond Beach, FL  32175 &bull;
+         (386) 555 - 7499 
+      </address>
+   </footer>
+
+   </body>
+
+
+</html>
+
+<script>
+    function confirmSubmission() {
+        alert("Thanks for placing the order.\nPlease input next order if you'd like.");
+        return false;
+    }
+</script>
