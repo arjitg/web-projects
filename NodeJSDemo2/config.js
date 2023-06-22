@@ -2,8 +2,8 @@
 
 const config = {
     DB: {
-        user: 'csu',
-        password: 'rams',
+        user: 'fudge',
+        password: 'brownie',
         server: 'buscissql1901\\cisweb',
         database: 'RWStudiosAPI',
         trustServerCertificate: true,
