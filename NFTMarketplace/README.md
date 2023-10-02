@@ -1,3 +1,7 @@
+
+![image](https://github.com/arjitg/web-projects/assets/15131095/a7d7a641-d772-4153-8798-bb66600a1672)
+
+
 Project technologies: 
 - .NET Core with SQL Server 
 
